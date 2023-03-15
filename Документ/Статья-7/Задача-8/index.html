@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        .hours {
+            color: red;
+        }
+
+        .minutes {
+            color: green;
+        }
+
+        .seconds {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock"></div>
+
+    <!-- клик по этой кнопке вызовет clockStart() -->
+    <input type="button" onclick="clockStart()" value="Старт">
+
+    <!-- клик по этой кнопке вызовет clockStop() -->
+    <input type="button" onclick="clockStop()" value="Стоп">
+
+    <script>
+        const clock = document.querySelector('.clock')
+
+        function time() {
+            let date = new Date(); 
+
+            let hours = date.getHours();
+            if (hours < 10) hours = '0' + hours;
+
+            let minutes = date.getMinutes();
+            if (minutes < 10) minutes = '0' + minutes;
+
+            let seconds = date.getSeconds();
+            if (seconds < 10) seconds = '0' + seconds;
+
+            clock.innerHTML = `
+                <span class="hours">${hours}</span>:
+                <span class="minutes">${minutes}</span>:
+                <span class="seconds">${seconds}</span>
+            `
+        }
+
+        function clockStart() {
+            clockInterval = setInterval(time, 1000)
+            time()
+        }
+
+        function clockStop() {
+            clearInterval(clockInterval)
+        }
+
+        clockInterval = setInterval(time, 1000)
+        time()
+    </script>
+</body>
+</html>
