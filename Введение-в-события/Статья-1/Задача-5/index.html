@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+
+    <style>
+        .button {
+            cursor: pointer;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        span {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h3 class="button"><span>▶</span><span class="hide">▼</span> Сладости (нажми меня)!</h3>
+    <ul class="hide">
+        <li>Пирожное</li>
+        <li>Пончик</li>
+        <li>Мёд</li>
+    </ul>
+
+    <script>
+        const button = document.querySelector('.button')
+        const list = document.querySelector('ul')
+        const spans = document.querySelectorAll('span')
+
+        button.addEventListener('click', event => {
+            list.classList.toggle('hide')
+
+            for (let span of spans) {
+                span.classList.toggle('hide')
+            }
+        })
+    </script>
+</body>
+</html>
